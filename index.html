@@ -12,6 +12,66 @@
         <h1>Promises, HTTP and Resources</h1>
     </div>
 
+    <input type="number" class="form-control" ng-model="model.number" />
+    <input type="button" class="btn btn-primary" 
+            value="Check Odd Number" ng-click="checkOddNumber(model.number)" />
+
+            <pre>{{model.result}}</pre>
+
+
+    <input type="button" class="btn btn-primary" 
+            value="Get Repositories" ng-click="getRepos()" ng-hide="model.repos"/>
+
+
+    <div class="col-md-6">
+        <table class="table table-striped" ng-show="model.repos">
+            <tr>
+                <th>Name</th>
+                <th>Languaje</th>
+            </tr>
+            <tr ng-repeat="repo in model.repos">
+                    <td><h4>{{repo.name}}</h4>{{repo.description}}</td>
+                    <td>{{repo.languaje}}</td>
+                    <td><input type="button" class="btn btn-success" 
+                            value="Detail" ng-click="loadDetails(repo.name)" />
+                    </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div class="col-md-5" ng-show="model.detail">
+        <h3>Detalle</h3>
+        <div ng-show="model.detail.error" class="alert alert-danger">
+            <h3>{{model.detail.message}}</h3>
+        </div>
+
+        <div>
+            <h4>Name</h4>
+            {{model.detail.name}}
+        </div>
+
+        <div>
+            <h4>Description</h4>
+            {{model.detail.description}}
+        </div>
+
+        <div>
+            <h4>URL</h4>
+            <a ng-href="{{model.detail.html_url}}" 
+            target="_blank">{{model.detail.html_url}}</a>
+            
+        </div>
+
+        <div>
+            <h4>Raw Data</h4>
+            <pre>{{model.detail | json}}</pre>
+        </div>
+    </div>
+
+
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
     <script src="./app/app.js"></script>
     <script src="./app/labController.js"></script>
