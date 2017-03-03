@@ -19,9 +19,11 @@
             <pre>{{model.result}}</pre>
 
 
+    <input type="text" class="form-control" ng-model="model.loadname" />
     <input type="button" class="btn btn-primary" 
-            value="Get Repositories" ng-click="getRepos()" ng-hide="model.repos"/>
+            value="Get Repositories" ng-click="getRepos()" />
 
+            <pre>{{model.repoResult}}</pre>
 
     <div class="col-md-6">
         <table class="table table-striped" ng-show="model.repos">
@@ -70,11 +72,12 @@
     </div>
 
 
-
-
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.5/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular-resource.min.js"></script>
     <script src="./app/app.js"></script>
+    <script src="./app/gitHubService.js"></script>
     <script src="./app/labController.js"></script>
+    
 </body>
 
 </html>
